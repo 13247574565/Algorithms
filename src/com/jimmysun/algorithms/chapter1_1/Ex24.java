@@ -6,6 +6,7 @@ public class Ex24 {
 		if (p == 0 || q == 0) {
 			return 1;
 		}
+		//确保p大q小
 		if (p < q) {
 			int t = p;
 			p = q;

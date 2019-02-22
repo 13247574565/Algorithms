@@ -24,7 +24,7 @@ public class Ex22 {
 	}
 
 	public static void main(String[] args) {
-		int[] a = { 1, 2, 3, 4, 6, 7, 8, 9, 12 };
+		int[] a = { 1, 2, 3, 4, 6,5,5,5,5, 7, 8, 9, 12 };
 		int key = 5;
 		int pos = rank(key, a);
 		if (pos == -1) {

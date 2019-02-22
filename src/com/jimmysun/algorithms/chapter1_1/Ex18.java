@@ -34,5 +34,7 @@ public class Ex18 {
 		System.out.println(mystery2(2, 25));
 		System.out.println(mystery2(3, 11));
 		System.out.println(mystery2(a, b) == Math.pow(a, b));
+		System.out.println(mystery2(a, b));
+		System.out.println(Math.pow(a, b));
 	}
 }

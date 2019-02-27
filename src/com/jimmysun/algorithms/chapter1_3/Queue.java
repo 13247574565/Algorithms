@@ -37,7 +37,9 @@ public class Queue<Item> implements Iterable<Item> {
 	}
 
 	public Item dequeue() {
+		//第一个元素
 		Item item = first.item;
+		//弹出一个后的第一个元素变化
 		first = first.next;
 		if (isEmpty()) {
 			last = null;

@@ -1,6 +1,7 @@
 package com.jimmysun.algorithms.chapter1_2;
 
 import edu.princeton.cs.algs4.Interval1D;
+import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdIn;
 
 public class Ex02 {

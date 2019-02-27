@@ -11,9 +11,10 @@ public class Ex01 {
 			points[i].draw();
 		}
 		if (N > 1) {
+			//先算第一个点跟第二个点的距离
 			double min = points[0].distanceTo(points[1]);
-			for (int i = 0; i < N - 1; i++) {
-				for (int j = i + 1; j < N; j++) {
+			for (int i = 0; i < N - 1; i++) {//0--->N-1
+				for (int j = i + 1; j < N; j++) {//1--->N
 					if (points[i].distanceTo(points[j]) < min) {
 						min = points[i].distanceTo(points[j]);
 					}

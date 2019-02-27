@@ -10,7 +10,7 @@ public class Evaluate {
 		Stack<Double> vals = new Stack<Double>();
 		while (!StdIn.isEmpty()) {
 			String s = StdIn.readString();
-			if (s.equals("(")) {
+			if (s.equals("(")) { 
 				;
 			} else if (s.equals("+")) {
 				ops.push(s);

@@ -55,6 +55,11 @@ public class Stack<Item> implements Iterable<Item> {
 		return N;
 	}
 
+	/**
+	 * 在头部添加
+	 * 
+	 * @param item
+	 */
 	public void push(Item item) {
 		Node oldfirst = first;
 		first = new Node();
@@ -64,6 +69,11 @@ public class Stack<Item> implements Iterable<Item> {
 		operates++;
 	}
 
+	/**
+	 * 头部删除
+	 * 
+	 * @return
+	 */
 	public Item pop() {
 		Item item = first.item;
 		first = first.next;

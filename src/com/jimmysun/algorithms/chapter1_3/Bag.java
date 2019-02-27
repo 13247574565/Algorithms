@@ -23,6 +23,7 @@ public class Bag<Item> implements Iterable<Item> {
 		Node oldfirst = first;
 		first = new Node();
 		first.item = item;
+		//先进先出
 		first.next = oldfirst;
 		N++;
 	}

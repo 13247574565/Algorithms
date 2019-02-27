@@ -26,16 +26,9 @@ public class Ex09 {
 	}
 
 	public static void main(String[] args) {
-		System.out.print("N: ");
-		int N = StdIn.readInt();
-		int[] a = new int[N];
-		System.out.print("list: ");
-		for (int i = 0; i < N; i++) {
-			a[i] = StdIn.readInt();
-		}
+		int[] a = {10,20,30,40,50,60,70,80,90,100,20};
 		Arrays.sort(a);
-		System.out.print("key: ");
-		int key = StdIn.readInt();
+		int key = 10;
 		Counter counter = new Counter("keys");
 		System.out.println(rank(key, a, counter));
 		System.out.println(counter);

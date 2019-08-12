@@ -6,18 +6,29 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
+
+/**
+ * 从第一个元素开始，往后寻找最小的那个元素，找到了就替换位置，找不到就跟自身替换位置
+ * @author 竹凉
+ *
+ */
+
 public class Selection {
 	public static void sort(Comparable[] a) {
+		//将a[]升序排序
+		int count = 0;//习题2.1.3记录次数
 		int N = a.length;
 		for (int i = 0; i < N; i++) {
 			int min = i;
 			for (int j = i + 1; j < N; j++) {
-				if (less(a[j], a[min])) {
+				if (less(a[j], a[min])) {//a[j] < a[min]时将最小索引置为j
 					min = j;
+					count++;
 				}
 			}
 			exch(a, i, min);
 		}
+		System.out.println(count);
 	}
 
 	/**
@@ -67,7 +78,7 @@ public class Selection {
 	}
 
 	private static boolean less(Comparable v, Comparable w) {
-		return v.compareTo(w) < 0;
+		return v.compareTo(w) < 0;//v.compareTo(w)： v>w时返回1 ，v<w时返回-1，v=w时返回0
 	}
 
 	private static void exch(Comparable[] a, int i, int j) {
@@ -93,7 +104,8 @@ public class Selection {
 	}
 
 	public static void main(String[] args) {
-		String[] a = new In().readAllStrings();
+//		String[] a = new In().readAllStrings();
+		Integer[] a = {1,2,3,4,5};
 		sort(a);
 		assert isSorted(a);
 		show(a);

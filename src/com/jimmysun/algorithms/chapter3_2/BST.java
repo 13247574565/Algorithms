@@ -53,6 +53,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 	}
 
 	private Node put(Node x, Key key, Value val) {
+		//树为空，创建一个新节点
 		if (x == null) {
 			return new Node(key, val, 1);
 		}
@@ -156,7 +157,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		if (t > k) {
 			return select(x.left, k);
 		} else if (t < k) {
-			return select(x.right, k - t - 1);
+			return select(x.right, k - (t + 1));
 		} else {
 			return x;
 		}

@@ -193,7 +193,7 @@ public final class StdOut {
      * @param x the object to print
      */
     public static void print(Object x) {
-        out.print(x);
+          out.print(x);
         out.flush();
     }
 

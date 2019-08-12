@@ -2,15 +2,18 @@ package com.jimmysun.algorithms.chapter2_1;
 
 import java.awt.Color;
 
+import com.sun.org.apache.bcel.internal.generic.INEG;
+
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
 public class Insertion {
+	private static int lessCount = 0;
 	public static void sort(Comparable[] a) {
 		int N = a.length;
 		for (int i = 0; i < N; i++) {
-			for (int j = i; j > 0 && less(a[j], a[j - 1]); j--) {
+			for (int j = i; j > 0 && less(a[j], a[j - 1],j); j--) {
 				exch(a, j, j - 1);
 			}
 		}
@@ -37,7 +40,7 @@ public class Insertion {
 		for (int i = 1; i < N; i++) {
 			StdDraw.text(1, 2 + i, i + "");
 			int red = i;
-			for (int j = i; j > 0 && less(a[j], a[j - 1]); j--) {
+			for (int j = i; j > 0 && less(a[j], a[j - 1], j); j--) {
 				exch(a, j, j - 1);
 				red = j - 1;
 				StdDraw.text(3 + j, 2 + i, a[j].toString());
@@ -58,26 +61,34 @@ public class Insertion {
 		}
 	}
 
-	private static boolean less(Comparable v, Comparable w) {
+	private static boolean less(Comparable v, Comparable w,int index) {
+ 		System.out.println(index);
+		lessCount++;
 		return v.compareTo(w) < 0;
 	}
-
+	/**
+	 * 根据数组a[]的索引交换a[j]，a[j-1]的位置
+	 * @param a
+	 * @param i
+	 * @param j
+	 */
 	private static void exch(Comparable[] a, int i, int j) {
 		Comparable t = a[i];
+		Comparable t2 = a[j];
 		a[i] = a[j];
 		a[j] = t;
 	}
 
 	private static void show(Comparable[] a) {
 		for (int i = 0; i < a.length; i++) {
-			StdOut.print(a[i] + " ");
+ 			StdOut.print(a[i] + " ");
 		}
 		StdOut.println();
 	}
 
 	public static boolean isSorted(Comparable[] a) {
 		for (int i = 0; i < a.length; i++) {
-			if (less(a[i], a[i - 1])) {
+			if (less(a[i], a[i - 1], i)) {
 				return false;
 			}
 		}
@@ -85,9 +96,14 @@ public class Insertion {
 	}
 
 	public static void main(String[] args) {
-		String[] a = new In().readAllStrings();
+//		String[] a = new In().readAllStrings();
+//		String[] a = {"E","A","S","Y","Q","U","E","S","T","I","O","N"};
+		String[] a = {"E","E","E","E","E","E","E","E","E","E"};
 		sort(a);
+		
 		assert isSorted(a);
 		show(a);
+		System.out.println(lessCount);
+		
 	}
 }

@@ -32,25 +32,31 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 		return N == 0;
 	}
 
+	/**
+	 * 找出key应该存放的位置
+	 * @param key
+	 * @return
+	 */
 	public int rank(Key key) {
 		int lo = 0, hi = N - 1;
 		while (lo <= hi) {
 			int mid = lo + (hi - lo) / 2;
 			int cmp = key.compareTo(keys[mid]);
-			if (cmp < 0) {
+			if (cmp < 0) {//key<leys[mid],在mid左边检索
 				hi = mid - 1;
-			} else if (cmp > 0) {
+			} else if (cmp > 0) {//key>keys[mid],在mid右边检索
 				lo = mid + 1;
-			} else {
+			} else {//key=keys[mid]
 				return mid;
 			}
 		}
+		//不存在该键，则返回表中小于它的键的数量，即0
 		return lo;
 	}
 
 	public void put(Key key, Value val) {
 		int i = rank(key);
-		if (i < N && keys[i].compareTo(key) == 0) {
+		if (i < N && keys[i].compareTo(key) == 0) {//存入的key已存在
 			vals[i] = val;
 			return;
 		}

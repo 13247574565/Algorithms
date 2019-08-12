@@ -11,17 +11,43 @@ public class Merge {
 		for (int k = lo; k <= hi; k++) {
 			aux[k] = a[k];
 		}
+		//"S","A","E"  0 0 1
+		//k= 0 , i=0 mid=0  j = 1  a[0]> a[1]    a[0]=aux[j++]= "A" j=2
+		
+		//k= 1 , i=0 mid=0  j = 2  j>hi    a[1]=aux[i++]= "S" j=2 i=1  
+		
+		//        2   3
+		//"A",   "S","E" 2 2 3
+		//k= 2 , i=2 mid=2 j=3  a[2]> a[3]    a[2]=aux[j++]= "E" j=4 i=2
+		
+		//k= 3 , i=2 mid=2 j=4  j>hi   a[3]=aux[i++]= "S" j=4 i=3         ES
+		
+		//AES
+		//0,1,2    ,3,4
+		
+		//0 1 2 3 4
+		//A E S D F
+		//0-4
+		//k= 0 , i=0 mid=2 j=3  4-->a[0]="A" i=1 j=3 
+		//k= 1 , i=1 mid=2 j=3  3-->a[1]="D" i=1 j=4
+		//k= 2 , i=1 mid=2 j=4  4-->a[2]="E" i=2 j=4
+		//k= 3 , i=2 mid=2 j=4  3-->a[3]="F" i=2 j=5
+		//k= 4 , i=2 mid=2 j=5  2-->a[4]="S" i=3 j=5
+		
+		
 		for (int k = lo; k <= hi; k++) {
 			if (i > mid) {
-				a[k] = aux[j++];
+				a[k] = aux[j++];//1
 			} else if (j > hi) {
-				a[k] = aux[i++];
+				a[k] = aux[i++];//2
 			} else if (less(aux[j], aux[i])) {
-				a[k] = aux[j++];
+				a[k] = aux[j++];//3
 			} else {
-				a[k] = aux[i++];
+				a[k] = aux[i++];//4
 			}
+			System.out.print(a[k]);
 		}
+		System.out.println();
 	}
 
 	public static void sort(Comparable[] a) {
@@ -30,6 +56,7 @@ public class Merge {
 	}
 
 	private static void sort(Comparable[] a, int lo, int hi) {
+		System.out.println(lo+"--"+hi);
 		if (hi <= lo) {
 			return;
 		}
@@ -39,6 +66,12 @@ public class Merge {
 		merge(a, lo, mid, hi);
 	}
 
+	/**
+	 * w>v时返回true
+	 * @param v
+	 * @param w
+	 * @return
+	 */
 	private static boolean less(Comparable v, Comparable w) {
 		return v.compareTo(w) < 0;
 	}
@@ -66,7 +99,8 @@ public class Merge {
 	}
 
 	public static void main(String[] args) {
-		String[] a = new In().readAllStrings();
+//		String[] a = new In().readAllStrings();
+		String[] a = {"S","A","E","D","F"};
 		sort(a);
 		assert isSorted(a);
 		show(a);
